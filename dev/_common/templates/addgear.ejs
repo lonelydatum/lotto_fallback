@@ -1,0 +1,51 @@
+
+ <script>
+      // AdGear functions
+      function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+      }
+
+      function getAdGearClickUrl(name) {
+        return getParameterByName('agclick_'+name) || getParameterByName(name);
+      }
+
+      var clickTag = getAdGearClickUrl('clickTAG');
+      var oobClickTrack = getAdGearClickUrl('oobclicktrack');
+
+      function clickThroughAdGear(name) {
+        var click_url = clickTag || getAdGearClickUrl('clickTAG');
+        var oobClickTrack = getAdGearClickUrl('oobclicktrack');
+        if(name) { click_url = getAdGearClickUrl(name); }        
+        if(click_url !== null && click_url !== "") {
+          window.open(click_url, "_blank");
+          if(oobClickTrack !== null) { var img = new Image(); img.src = oobClickTrack; }
+        }
+      }
+      // END AdGear functions
+
+      // Apply the click on the banner div
+      function regEvent(elem, eventName, fn) {
+        if(typeof elem.addEventListener != "undefined") {
+          elem.addEventListener(eventName, fn, false);
+          return true;
+        } else if(typeof elem.attachEvent != "undefined") {
+          elem.attachEvent("on"+eventName, fn);
+          return true;
+        } else if(typeof elem["on"+eventName] == "function") {
+          var existing = elem["on"+eventName];
+          elem["on"+eventName] = function() {
+            existing();
+            fn();
+          };
+          return true;
+        } else {
+          try { elem["on"+eventName] = fn; } catch(err) { return false; }
+          return typeof elem["on"+eventName] == "function";
+        }
+      }
+
+      regEvent(document.querySelector("#banner"), "click", function() { clickThroughAdGear(); });
+    </script>

@@ -1,0 +1,175 @@
+@import './mixins.scss';
+@import './reset.scss';
+
+
+/*--------------------------------------------*/
+/* common */
+/*--------------------------------------------*/
+
+html, body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+a {
+	color: inherit;
+}
+
+body{
+	margin: 0;
+	padding: 0;
+	background-color: #EFEFEF;
+}
+
+canvas{
+	display: block;
+	top:0;
+	left:0;
+}
+
+#banner{
+	/* bigbox */
+	width: 300px;
+	height: 250px;
+	overflow: hidden;
+	position: relative;
+	background-color: white;
+	-webkit-text-size-adjust: 100%;
+	opacity: 1;
+	cursor: pointer;
+	& > a {
+		width: inherit;
+		height: inherit;
+	}
+}
+
+canvas, .text, .frame, .outline, img{
+	position: absolute;
+}
+
+img{
+	vertical-align:top;
+	 -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0) scale(1.0, 1.0);
+}
+
+.outline{
+	z-index: 99;
+	width: inherit;
+	height: inherit;
+	border: 1px solid black;
+	pointer-events: none;
+	position: absolute;
+}
+
+.frame{
+	width: inherit;
+	height: inherit;
+	opacity: 0;
+	top:0;
+	left:0;
+}
+
+p{
+	display: inline-block;
+	// font-weight: normal !important;
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+}
+
+sup{
+	font-size: 50%;
+	vertical-align: top;
+	position: relative;
+	left:-3px;
+}
+
+
+
+.shadow{
+	-webkit-filter: drop-shadow(4px 4px 8px rgba(0,0,0,.5));
+	filter: drop-shadow(4px 4px 8px rgba(0,0,0,.5));
+}
+
+
+
+
+.retina{
+	@include pos-scale(0, 0, .5);
+	transform-origin: 0 0 ;
+	image-rendering: -webkit-optimize-contrast;
+	
+}
+
+
+
+
+#legalBtn:hover ~ #legalContent {
+	opacity: 1;
+	
+}
+
+#legalContent{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,.9);
+	@include pos(0, 0);
+	color: white;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	padding: 10px;
+	font-size: 10px;
+	z-index: 90;
+	opacity: 0;
+	font-weight: normal;
+	line-height: 14px;
+	transition: opacity .3s;
+	pointer-events: none;
+}
+
+.hide{
+	opacity: 0;
+	@include pos(0, 0);
+	z-index: 0;
+	pointer-events: none;
+}
+
+#legalBtn{	
+	@include pos(0, 0);
+	opacity: 1;
+	width: 36px;
+	height: 25px;
+	background-color: red;
+	opacity: 0;
+}
+
+
+#pn-bg-exit{
+	width: 100%;
+	height: 100%;
+	// background-color: rgba(255,0,0,.2);
+	position: absolute;
+	top: 0;
+	left: 0;
+
+}
+
+.num{
+	// border: 1px solid red;
+	opacity: 0;
+}
+
+.endframe, .numbers{
+	display: none;
+}
+
+// #end_2b{	
+// 	display: none;
+// }
+
+#millions{
+	@include pos(20, 115);
+}

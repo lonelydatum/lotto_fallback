@@ -1,0 +1,83 @@
+$prefixes: webkit ms moz;
+$property: transform;
+
+
+@mixin prefix($value){
+  
+  -webkit-transform: $value;
+  -moz-transform: $value;
+  -ms-transform: $value;
+  transform: $value;
+  // @each $prefix in $prefixes {
+  //     #{'-' + $prefix + '-' + $property}: $value;
+  // }
+  
+}
+
+@mixin pos($x, $y) {  
+    @include prefix( translate($x + px,$y + px) );
+    backface-visibility: hidden;
+    perspective: 1000px;
+    position: absolute;
+}
+
+@mixin pos-scale($x, $y, $s) {
+    @include prefix( translate($x + px, $y + px) scale($s, $s) );
+    backface-visibility: hidden;
+    perspective: 1000px;
+    position: absolute;
+}
+@mixin pos-scalexy($x, $y, $sx, $sy) {
+    @include prefix( translate($x + px, $y + px) scale($sx, $sy) );
+    backface-visibility: hidden;
+    perspective: 1000px;
+    position: absolute;
+}
+
+@mixin pos-scale-rotate($x, $y, $s, $r) {
+  @include prefix( translate($x + px, $y + px) scale($s) rotate($r + deg) );
+  backface-visibility: hidden;
+    perspective: 1000px;
+  position: absolute;
+}
+
+
+
+
+
+
+
+
+// $prefixes: webkit ms moz;
+// $property: transform;
+
+
+// @mixin prefix($value){
+// 	@each $prefix in $prefixes {
+// 	    #{'-' + $prefix + '-' + $property}: $value;
+// 	}
+// 	#{$property}: $value;	
+// }
+
+
+// @mixin pos($x, $y) {	
+//   	@include prefix( translate($x + px,$y + px) );
+//   	position: absolute;
+// }
+
+
+
+
+
+// @mixin pos-scale($x, $y, $s) {
+//   	@include prefix( translate($x + px, $y + px) scale($s, $s) );
+//   	position: absolute;
+// }
+
+
+
+
+// @mixin pos-scale-rotate($x, $y, $s, $r) {
+//   @include prefix( translate($x + px, $y + px) scale($s) rotate($r + deg) );
+//   position: absolute;
+// }

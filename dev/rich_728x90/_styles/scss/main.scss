@@ -1,0 +1,92 @@
+
+
+@import '../../../_common/styles/common.scss';
+
+
+
+#millions{
+	@include pos-scale(28, 29, .78);
+	img{
+		filter: none;
+	}
+}
+
+.logo{
+	@include pos-scale(0, 0, .5);
+}
+
+.bg2{
+	opacity: 0;
+}
+
+.frame1 {
+	// opacity: 1;
+}
+
+.blinkFrame {
+	opacity: 1;
+	width:430px;
+	left: 297px;
+}
+
+.blink{
+	// opacity:.6;
+	@include pos(0, 0);
+	width: 100%;
+	height: 100%;
+	
+	.filler{
+		width: 100%;
+		height: 60%;
+		background-color: black;		
+	}
+
+	&.top{
+		@include pos(0, 0);
+		.filler{
+			@include pos(0, 0);
+		}
+		img{
+			@include pos(0, 45);
+		}
+	}	
+
+	&.bottom{
+		@include pos(0, 0);
+		.filler{
+			@include pos(0, 45);
+		}
+		img{
+			@include pos-scalexy(0, 0, 1, -1);
+		}
+	}	
+
+
+}
+
+
+
+#end_2b{
+	// left: 33px;
+	@include pos-scale(0, -37, (1/.78)/2);
+}
+
+
+
+.brush{
+	@include pos-scale(-60, 16, .5);
+	clip: rect(0px, 298px, 96px, 0px);
+}
+
+.jackpot_no .cta{
+	@include pos-scale(143, -6, .5);
+}
+
+
+#banner{
+	font-size: 20px;
+	color: #333;
+	width: 728px;
+	height: 90px;
+}
+

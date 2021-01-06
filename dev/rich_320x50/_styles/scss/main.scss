@@ -1,0 +1,38 @@
+
+
+@import '../../../_common/styles/common.scss';
+
+
+
+#millions{
+	opacity:1;
+	@include pos-scale(86, 19, .55);
+	img{
+		filter:none;
+	}
+}
+
+.frame1, .numbers {
+	// opacity: 1;
+}
+
+.frame2 {
+	opacity: 1;
+}
+
+#end_2b{
+	// left: 86px;
+	@include pos-scale(0, -36, 1.8181818181818181/2);
+}
+
+.brush{
+	@include pos(0, 0);
+	clip: rect(0px, 320px, 50px, 0px);
+}
+
+#banner{	
+	width: 320px;
+	height: 50px;
+	background-color: #003366;
+}
+
